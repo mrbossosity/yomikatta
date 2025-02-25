@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/yomikatta/static/css/main.d76925f2.css",
+    "main.js": "/yomikatta/static/js/main.cf0ed9d4.js",
+    "index.html": "/yomikatta/index.html",
+    "main.d76925f2.css.map": "/yomikatta/static/css/main.d76925f2.css.map",
+    "main.cf0ed9d4.js.map": "/yomikatta/static/js/main.cf0ed9d4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d76925f2.css",
+    "static/js/main.cf0ed9d4.js"
+  ]
+}
