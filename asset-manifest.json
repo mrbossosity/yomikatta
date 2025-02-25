@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/yomikatta/static/css/main.d76925f2.css",
-    "main.js": "/yomikatta/static/js/main.ed257271.js",
+    "main.css": "/yomikatta/static/css/main.abb4dbe5.css",
+    "main.js": "/yomikatta/static/js/main.cb46ed57.js",
     "index.html": "/yomikatta/index.html",
-    "main.d76925f2.css.map": "/yomikatta/static/css/main.d76925f2.css.map",
-    "main.ed257271.js.map": "/yomikatta/static/js/main.ed257271.js.map"
+    "main.abb4dbe5.css.map": "/yomikatta/static/css/main.abb4dbe5.css.map",
+    "main.cb46ed57.js.map": "/yomikatta/static/js/main.cb46ed57.js.map"
   },
   "entrypoints": [
-    "static/css/main.d76925f2.css",
-    "static/js/main.ed257271.js"
+    "static/css/main.abb4dbe5.css",
+    "static/js/main.cb46ed57.js"
   ]
 }
