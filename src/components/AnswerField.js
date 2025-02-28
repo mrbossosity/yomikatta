@@ -15,7 +15,7 @@ const AnswerFieldContainer = styled.input.attrs((props) => ({
     text-align: center;
 `;
 
-function AnswerField({ userInput, setUserInput, checkAnswer }) {
+function AnswerField({ ref, userInput, setUserInput, checkAnswer }) {
     function handleChange(e) {
         setUserInput(e.target.value);
     }
@@ -29,6 +29,7 @@ function AnswerField({ userInput, setUserInput, checkAnswer }) {
         <>
             <form onSubmit={handleSubmit}>
                 <AnswerFieldContainer
+                    ref={ref}
                     value={userInput}
                     onChange={handleChange}
                     autoFocus

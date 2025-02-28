@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { DeckContext } from "../App";
 import styled from "styled-components";
 import AnswerField from "./AnswerField";
@@ -55,6 +55,7 @@ function Play() {
     const [currentCard, setCurrentCard] = useState(shuffledDeck[0]);
 
     const [questionPhase, setQuestionPhase] = useState(true);
+    const inputRef = useRef(null);
     const [userInput, setUserInput] = useState("");
     const [isCorrect, setIsCorrect] = useState(false);
 
@@ -63,8 +64,8 @@ function Play() {
         const realAnswer = currentCard.reading;
 
         if (userAnswer == realAnswer) {
-            setIsCorrect(true);
             setQuestionPhase(false);
+            setIsCorrect(true);
         }
     }
 
@@ -107,6 +108,38 @@ function Play() {
         resetQuestion();
     }
 
+    // Handles keydown event listeners for grading cards after question
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (!questionPhase) {
+                event.preventDefault();
+                switch (event.key) {
+                    case "1":
+                        gradeCard(1);
+                        break;
+                    case "2":
+                        gradeCard(4);
+                        break;
+                    case "3":
+                        gradeCard(16);
+                        break;
+                    case "4":
+                        gradeCard(64);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        // Clean up function to prevent leaks
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [questionPhase]);
+
     return (
         <>
             <PlayContainer>
@@ -120,6 +153,7 @@ function Play() {
                 {questionPhase && (
                     <AnswerContainer>
                         <AnswerField
+                            ref={inputRef}
                             userInput={userInput}
                             setUserInput={setUserInput}
                             checkAnswer={checkAnswer}
