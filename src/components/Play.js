@@ -108,6 +108,14 @@ function Play() {
         resetQuestion();
     }
 
+    function suspendCard() {
+        let newDeck = shuffledDeck.filter((card) => card.id !== currentCard.id);
+
+        setShuffledDeck(newDeck);
+        setCurrentCard(newDeck[0]);
+        resetQuestion();
+    }
+
     // Handles keydown event listeners for grading cards after question
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -125,6 +133,9 @@ function Play() {
                         break;
                     case "4":
                         gradeCard(64);
+                        break;
+                    case "0":
+                        suspendCard();
                         break;
                     default:
                         break;
@@ -191,6 +202,11 @@ function Play() {
                             onClick={() => gradeCard(64)}
                             text={"4 - Cake"}
                             hoverColor={"dodgerblue"}
+                        />
+                        <BigButton
+                            onClick={suspendCard}
+                            text={"Suspend"}
+                            hoverColor={"indianred"}
                         />
                     </GradingButtonsContainer>
                 )}
