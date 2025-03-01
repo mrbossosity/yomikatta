@@ -110,6 +110,10 @@ function Play() {
 
     function suspendCard() {
         let newDeck = shuffledDeck.filter((card) => card.id !== currentCard.id);
+        if (newDeck.length < 1) {
+            alert("No more cards!");
+            return;
+        }
 
         setShuffledDeck(newDeck);
         setCurrentCard(newDeck[0]);
@@ -150,6 +154,10 @@ function Play() {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [questionPhase]);
+
+    useEffect(() => {
+        checkAnswer();
+    }, [userInput]);
 
     return (
         <>
