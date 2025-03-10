@@ -25,8 +25,18 @@ function App() {
     const [playScreen, setPlayScreen] = useState(false);
     const [shuffledDeck, setShuffledDeck] = useState(deck);
 
-    function shuffleCards() {
-        const deckCopy = [...deck];
+    function deckSelect() {
+        setDeckScreen(true);
+        setPlayScreen(false);
+    }
+
+    function playSelect() {
+        if (deck.length < 1) {
+            alert("Your deck is empty! Add some cards first.");
+            return;
+        }
+
+        var deckCopy = [...deck];
 
         // Fisher-Yates random shuffle
         for (let i = deckCopy.length - 1; i > 0; i--) {
@@ -38,22 +48,19 @@ function App() {
             deckCopy[j] = temp;
         }
 
+        // Remove suspended cards, then update deck
+        deckCopy = deckCopy.filter((card) => !card.suspended);
         setShuffledDeck(deckCopy);
-    }
 
-    function deckSelect() {
-        setDeckScreen(true);
-        setPlayScreen(false);
-    }
-
-    function playSelect() {
-        if (deck.length < 1) {
-            alert("Your deck is empty! Add some cards first.");
-            return;
+        // Prevent rendering if deck is empty
+        if (deckCopy.length > 0) {
+            setDeckScreen(false);
+            setPlayScreen(true);
+        } else {
+            alert("No active cards! Add or restore some cards first.");
+            setDeckScreen(true);
+            setPlayScreen(false);
         }
-        setDeckScreen(false);
-        setPlayScreen(true);
-        shuffleCards();
     }
 
     return (

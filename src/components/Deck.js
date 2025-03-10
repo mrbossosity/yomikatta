@@ -79,6 +79,20 @@ function Deck() {
         setDeck(newDeck);
     }
 
+    function suspendCard(id) {
+        let newDeck = [...deck];
+        let cardToSuspend = newDeck.find((card) => card.id === id);
+        cardToSuspend.suspended = true;
+        setDeck(newDeck);
+    }
+
+    function restoreCard(id) {
+        let newDeck = [...deck];
+        let cardToSuspend = newDeck.find((card) => card.id === id);
+        cardToSuspend.suspended = false;
+        setDeck(newDeck);
+    }
+
     // Delete card functionality
     function deleteCard(id) {
         if (window.confirm("Are you sure you want to delete this card?")) {
@@ -109,6 +123,8 @@ function Deck() {
                         key={card.id}
                         card={card}
                         openEditModal={openEditModal}
+                        suspendCard={suspendCard}
+                        restoreCard={restoreCard}
                         deleteCard={deleteCard}
                     />
                 ))}

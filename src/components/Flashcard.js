@@ -7,7 +7,7 @@ const Card = styled.div`
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: #ddd;
+    background-color: ${(props) => (props.$card.suspended ? "#bbb" : "#ddd")};
     color: #181818;
 `;
 
@@ -29,9 +29,15 @@ const ButtonsRow = styled.div`
     margin-top: 0.5rem;
 `;
 
-function Flashcard({ card, openEditModal, deleteCard }) {
+function Flashcard({
+    card,
+    openEditModal,
+    suspendCard,
+    restoreCard,
+    deleteCard,
+}) {
     return (
-        <Card>
+        <Card $card={card}>
             <Term>{card.term}</Term>
             <Reading>{card.reading}</Reading>
             <Definition>{card.definition}</Definition>
@@ -41,6 +47,20 @@ function Flashcard({ card, openEditModal, deleteCard }) {
                     text={"Edit"}
                     hoverColor={"dodgerblue"}
                 />
+                {!card.suspended && (
+                    <SmallButton
+                        onClick={() => suspendCard(card.id)}
+                        text={"Suspend"}
+                        hoverColor={"darkorange"}
+                    />
+                )}
+                {card.suspended && (
+                    <SmallButton
+                        onClick={() => restoreCard(card.id)}
+                        text={"Restore"}
+                        hoverColor={"mediumseagreen"}
+                    />
+                )}
                 <SmallButton
                     onClick={() => deleteCard(card.id)}
                     text={"Delete"}

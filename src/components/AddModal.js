@@ -37,6 +37,7 @@ function AddModal({ saveNewCard, closeAddModal }) {
         term: "",
         reading: "",
         definition: "",
+        suspended: false,
     });
 
     function handleChange(e) {

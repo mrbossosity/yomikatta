@@ -155,6 +155,7 @@ function Play() {
         };
     }, [questionPhase]);
 
+    // Checks answer every time user input changes
     useEffect(() => {
         checkAnswer();
     }, [userInput]);
