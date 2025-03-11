@@ -7,7 +7,7 @@ const Card = styled.div`
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: ${(props) => (props.$card.suspended ? "#bbb" : "#ddd")};
+    background-color: ${(props) => (props.$card?.suspended ? "#bbb" : "#ddd")};
     color: #181818;
 `;
 
@@ -47,14 +47,14 @@ function Flashcard({
                     text={"Edit"}
                     hoverColor={"dodgerblue"}
                 />
-                {!card.suspended && (
+                {!card?.suspended && (
                     <SmallButton
                         onClick={() => suspendCard(card.id)}
                         text={"Suspend"}
                         hoverColor={"darkorange"}
                     />
                 )}
-                {card.suspended && (
+                {card?.suspended && (
                     <SmallButton
                         onClick={() => restoreCard(card.id)}
                         text={"Restore"}

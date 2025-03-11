@@ -49,7 +49,7 @@ function App() {
         }
 
         // Remove suspended cards, then update deck
-        deckCopy = deckCopy.filter((card) => !card.suspended);
+        deckCopy = deckCopy.filter((card) => !card?.suspended);
         setShuffledDeck(deckCopy);
 
         // Prevent rendering if deck is empty
