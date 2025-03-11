@@ -74,6 +74,7 @@ function EditModal({ selectedCard, closeEditModal, updateCard }) {
                             name="term"
                             value={formData.term}
                             onChange={handleChange}
+                            required
                         />
                     </FormRow>
                     <FormRow>
@@ -83,6 +84,7 @@ function EditModal({ selectedCard, closeEditModal, updateCard }) {
                             name="reading"
                             value={formData.reading}
                             onChange={handleChange}
+                            required
                         />
                     </FormRow>
                     <FormRow>
@@ -92,6 +94,7 @@ function EditModal({ selectedCard, closeEditModal, updateCard }) {
                             name="definition"
                             value={formData.definition}
                             onChange={handleChange}
+                            required
                         />
                     </FormRow>
                     <FormRow>

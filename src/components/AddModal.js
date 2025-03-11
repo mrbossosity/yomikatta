@@ -66,6 +66,7 @@ function AddModal({ saveNewCard, closeAddModal }) {
                             name="term"
                             value={newCard.term}
                             onChange={handleChange}
+                            required
                         />
                     </FormRow>
                     <FormRow>
@@ -75,6 +76,7 @@ function AddModal({ saveNewCard, closeAddModal }) {
                             name="reading"
                             value={newCard.reading}
                             onChange={handleChange}
+                            required
                         />
                     </FormRow>
                     <FormRow>
@@ -84,6 +86,7 @@ function AddModal({ saveNewCard, closeAddModal }) {
                             name="definition"
                             value={newCard.definition}
                             onChange={handleChange}
+                            required
                         />
                     </FormRow>
                     <FormRow>
